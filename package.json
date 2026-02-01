@@ -23,5 +23,11 @@
         "stylelint-prettier": "^5.0.3",
         "tailwindcss": "^4.0.0",
         "vite": "^7.0.7"
+    },
+    "run-if-changed": {
+        "app/View/Components/**/*.php": "./artisan view:clear",
+        "package-lock.json": "npm install --prefer-offline --no-audit",
+        "composer.lock": "composer install",
+        "resources/@(css|js|views)/**.*": "npm run build"
     }
 }
