@@ -13,6 +13,7 @@
         "prepare": "husky 2>/dev/null || true"
     },
     "devDependencies": {
+        "@hkdobrev/run-if-changed": "^0.6.3",
         "@tailwindcss/vite": "^4.0.0",
         "axios": "^1.11.0",
         "blade-formatter": "^1.44.2",
