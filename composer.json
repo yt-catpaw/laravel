@@ -78,7 +78,8 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
-        ]
+        ],
+        "watch": "phpunit-watcher watch"
     },
     "extra": {
         "laravel": {
