@@ -1,0 +1,46 @@
+includes:
+  # Laravel向けの型推論・拡張（Larastan）
+  - vendor/larastan/larastan/extension.neon
+
+  # Mockery のチェーン呼び出し等をPHPStanが理解できるようにする
+  - vendor/phpstan/phpstan-mockery/extension.neon
+
+parameters:
+  # @mixin 等で Eloquent を混ぜた時のノイズを減らすため
+  mixinExcludeClasses:
+    - Eloquent
+
+  # 解析の厳しさ（0〜max）
+  level: 8
+
+  # 解析対象
+  paths:
+    - app
+    - tests
+
+  # ide-helper の型情報を読み込む
+  scanFiles:
+    - _ide_helper.php
+
+  # 解析対象から除外
+  excludePaths:
+    - vendor
+
+  # Laravel/テストで出やすい既知ノイズの抑制
+  ignoreErrors:
+    # テストコードの戻り値型未指定は許容
+    -
+      message: '#has no return type(hint)? specified#'
+      paths:
+        - tests
+
+    # Request/Response の型差・スタブ差分など、現状の設計上出る警告を抑制
+    - '#Access to undefined constant Illuminate\\Http\\Request::#'
+    - '#Call to an undefined method Faker\\Generator::#'
+    - '#Call to an undefined method Illuminate\\Contracts\\Auth\\Guard::#'
+    - '#Call to an undefined method Illuminate\\Http\\Request::#'
+    - '#expects Symfony\\Component\\HttpFoundation\\Request, Illuminate\\Http\\Request given#'
+    - '#expects Symfony\\Component\\HttpFoundation\\Response, Illuminate\\Http\\Response given#'
+
+  # ignoreErrors が将来マッチしなくなっても警告しない
+  reportUnmatchedIgnoredErrors: false
