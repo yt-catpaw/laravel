@@ -5,6 +5,7 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
+        "fix": "run-p fix:*",
         "fix:php": "php-cs-fixer fix",
         "fix:js": "prettier --write '**/*.js'",
         "fix:css": "stylelint --fix 'resources/css/**/*'",
