@@ -1,0 +1,27 @@
+# phpunit-watcher の設定ファイル
+# 指定したディレクトリ配下の PHP ファイルが変更されたら、PHPUnit（テスト）を自動実行するための監視設定
+
+watch:
+  directories:
+    # アプリ本体
+    - app
+
+    # 設定ファイル
+    - config
+
+    # DB関連（テストデータ生成・マイグレーション・シーダー）
+    - database/factories
+    - database/migrations
+    - database/seeders
+
+    # Blade（View）※PHPUnitでViewに関するテストがある場合の変更検知用
+    - resources/views
+
+    # ルーティング
+    - routes
+
+    # テストコード
+    - tests
+
+  # 監視対象のファイル拡張子（ここではPHPファイルのみ）
+  fileMask: '*.php'
